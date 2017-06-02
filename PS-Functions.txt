@@ -1,0 +1,41 @@
+Select-Objects ($objectArray)
+Set-SPFormViews ($spField, $newBool, $editBool, $dispBool)
+Hide-SPField ($spField) 
+Add-SPField ($spList, $name, $type, $required, $unique)
+New-SPRoleDefinition ($name, $description)
+New-SPRoleAssignment ($spWeb, $groupname, $rolename)
+New-SPRoleAssignment ($spWeb, $listname, $groupname, $rolename)
+New-SPList ($spWeb, $listname, $description)
+Set-SPView ($spList)
+New-SPSubWeb ($spWeb, $name, $description)
+New-SPSiteGroup ($spWeb, $name, $description)
+Get-SPWebApplicationOverview 
+Select-SPWebApplication
+Select-SPSite
+Select-SPWeb
+Select-SPList ($spListCol)
+Select-SPField ($spFieldCol)
+Select-SPGroup ($spGroupCol)
+Set-SPShellAdminPP ($userStr)
+Get-ContentDatabasePP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

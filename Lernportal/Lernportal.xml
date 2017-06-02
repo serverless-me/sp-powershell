@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Title="Ausbildungsintranet" Url="http://yourserver:26341" Owner="de\serverless-me">
+	<Website RelUrl="/"  Name="Ausbildungsintranet">
+		<Website Name="Beispiel-Bildungsinstitut Blog" RelUrl="/bildungsblog" Template="BLOG#0"  Description="Ausbildungs- und Rehabilitandenblog des Beispiel-Bildungsinstitut"
+				 UseParentTopNav="$true" AddToTopNav="$false" AddToQuickLaunch="$true" BreakRoleInheritance="$true">
+			<RoleAssignment Group="ABC-User" RoleDefinition="Erstellen"/>
+			<RoleAssignment Group="Blog-Moderatoren" RoleDefinition="Entwerfen"/>
+		</Website>
+		<Website Name="Lernportal" RelUrl="/lernportal" Template="STS#1" Description="Lernportal des Beispiel-Bildungsinstitut"
+				 UseParentTopNav="$true" AddToTopNav="$true" AddToQuickLaunch="$false" BreakRoleInheritance="$false">
+			<List Name="Skripte" ListTemplate="DocumentLibrary" Description="Skripte können von Ausbildern erstellt werden, anderen freigegeben und in Lerngruppen verwendet werden"
+				  OnQuickLaunch="$false" EnableFolderCreation="$false"
+				  ContentTypesEnabled="$true" EnableVersioning="$true" EnableMinorVersions="$true"
+				   BreakRoleInheritance="$false">
+				<Field Name="Ausbildungsrichtung" SPFieldType="Choice" abc="$true" Required="$false" Choices="Bau;gewerblich-technisch;kaufmännisch;übergreifend"
+					Description="Die Ausbildungsrichtung gibt an aus welchem Bereich der Ausbildungsinhalt stammt: kaufmännisch, gewerblich-technisch oder Bau"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					EditFormat="RadioButtons"/>
+				<Field Name="Beschreibung" SPFieldType="Note" Required="$false"
+					Description="Die Beschreibung gibt Aufschluss über Inhalt und Umfang eines Ausbildungsinhalts"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<Field Name="Lerngruppen" SPFieldType="Lookup" LookupList="Lerngruppen"
+					Description="Lerngruppen, in denen der Ausbildungsinhalt verwendet wird"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$false"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Freigabe" SPFieldType="Boolean" Required="$false"
+					Description="Eine Freigabe bedeutet, dass das Dokument von anderen Ausbildern in Lerngruppen verwendet werden kann"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<View Title="Alle Dokumente">
+					<ViewField InternalName="DocIcon"/>
+					<ViewField InternalName="Title"/>
+					<ViewField InternalName="FileSizeDisplay"/>
+					<ViewField InternalName="Freigabe"/>
+					<ViewField InternalName="_ModerationStatus"/>
+					<ViewField InternalName="Author"/>
+					<ViewField InternalName="ID"/>
+				</View>
+				<RoleAssignment Group="Ausbilder Gesamt" RoleDefinition="Ausbildungsinhalte erstellen"/>
+				<RoleAssignment Group="Lerngruppen-Koordinatoren" RoleDefinition="Nur anzeigen"/>
+				<RoleAssignment Group="Skript-Genehmiger" RoleDefinition="Skript-Genehmigung"/>
+			</List>
+			<List Name="Contents" ListTemplate="DocumentLibrary" Description="E-Learning Contents können hier verwaltet werden und in Lerngruppen wiederverwendet werden"
+					OnQuickLaunch="$false" EnableFolderCreation="$false"
+					ContentTypesEnabled="$true" EnableVersioning="$true" EnableMinorVersions="$true"
+				   BreakRoleInheritance="$false">
+				<Field Name="Ausbildungsrichtung" SPFieldType="Choice" abc="$true" Required="$false" Choices="Bau;gewerblich-technisch;kaufmännisch;übergreifend"
+					Description="Die Ausbildungsrichtung gibt an aus welchem Bereich der Ausbildungsinhalt stammt: kaufmännisch, gewerblich-technisch oder Bau"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					EditFormat="RadioButtons"/>
+				<Field Name="Beschreibung" SPFieldType="Note" Required="$false"
+					Description="Die Beschreibung gibt Aufschluss über Inhalt und Umfang eines Ausbildungsinhalts"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<Field Name="Lerngruppen" SPFieldType="Lookup" LookupList="Lerngruppen"
+					Description="Lerngruppen, in denen der Ausbildungsinhalt verwendet wird"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$false"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Lizenzpflicht" SPFieldType="Boolean" Required="$false"
+					Description="Die Lizenzpflicht gibt an, ob für einen E-Learning Content eine Lizenzgebühr pro Benutzer gezahlt werden muss"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					DefaultValue="$true"/>
+				<View Title="Alle Dokumente">
+					<ViewField InternalName="DocIcon"/>
+					<ViewField InternalName="Title"/>
+					<ViewField InternalName="FileSizeDisplay"/>
+					<ViewField InternalName="Lizenzpflicht"/>
+					<ViewField InternalName="ID"/>
+				</View>
+				<RoleAssignment Group="Ausbilder Gesamt" RoleDefinition="Lesen"/>
+				<RoleAssignment Group="Lerngruppen-Koordinatoren" RoleDefinition="Lesen"/>
+			</List>
+			<List Name="CAD-Zeichnungen" ListTemplate="DocumentLibrary" Description="CAD-Zeichnungen können von Ausbildern erstellt werden, anderen freigegeben und in Lerngruppen verwendet werden"
+					OnQuickLaunch="$false" EnableFolderCreation="$false"
+					ContentTypesEnabled="$true" EnableVersioning="$true" EnableMinorVersions="$true"
+				   BreakRoleInheritance="$false">
+				<Field Name="Ausbildungsrichtung" SPFieldType="Choice" abc="$true" Required="$false" Choices="Bau;gewerblich-technisch;kaufmännisch;übergreifend"
+					Description="Die Ausbildungsrichtung gibt an aus welchem Bereich der Ausbildungsinhalt stammt: kaufmännisch, gewerblich-technisch oder Bau"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					EditFormat="RadioButtons"/>
+				<Field Name="Beschreibung" SPFieldType="Note" Required="$false"
+					Description="Die Beschreibung gibt Aufschluss über Inhalt und Umfang eines Ausbildungsinhalts"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<Field Name="Lerngruppen" SPFieldType="Lookup" LookupList="Lerngruppen"
+					Description="Lerngruppen, in denen der Ausbildungsinhalt verwendet wird"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$false"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Freigabe" SPFieldType="Boolean" Required="$false"
+					Description="Eine Freigabe bedeutet, dass das Dokument von anderen Ausbildern in Lerngruppen verwendet werden kann"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<View Title="Alle Dokumente">
+					<ViewField InternalName="DocIcon"/>
+					<ViewField InternalName="Title"/>
+					<ViewField InternalName="FileSizeDisplay"/>
+					<ViewField InternalName="Freigabe"/>
+					<ViewField InternalName="Author"/>
+					<ViewField InternalName="ID"/>
+				</View>
+				<RoleAssignment Group="Ausbilder Gesamt" RoleDefinition="Ausbildungsinhalte erstellen"/>
+				<RoleAssignment Group="Lerngruppen-Koordinatoren" RoleDefinition="Nur anzeigen"/>
+			</List>
+			<List Name="Übungen" ListTemplate="DocumentLibrary" Description="Übungen können von Ausbildern erstellt werden, anderen freigegeben und in Lerngruppen verwendet werden"
+					OnQuickLaunch="$false" EnableFolderCreation="$false"
+					ContentTypesEnabled="$true" EnableVersioning="$true" EnableMinorVersions="$true"
+				   BreakRoleInheritance="$false">
+				<Field Name="Ausbildungsrichtung" SPFieldType="Choice" abc="$true" Required="$false" Choices="Bau;gewerblich-technisch;kaufmännisch;übergreifend"
+					Description="Die Ausbildungsrichtung gibt an aus welchem Bereich der Ausbildungsinhalt stammt: kaufmännisch, gewerblich-technisch oder Bau"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					EditFormat="RadioButtons"/>
+				<Field Name="Beschreibung" SPFieldType="Note" Required="$false"
+					Description="Die Beschreibung gibt Aufschluss über Inhalt und Umfang eines Ausbildungsinhalts"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<Field Name="Lerngruppen" SPFieldType="Lookup" LookupList="Lerngruppen"
+					Description="Lerngruppen, in denen der Ausbildungsinhalt verwendet wird"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$false"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Freigabe" SPFieldType="Boolean" Required="$false"
+					Description="Eine Freigabe bedeutet, dass das Dokument von anderen Ausbildern in Lerngruppen verwendet werden kann"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<View Title="Alle Dokumente">
+					<ViewField InternalName="DocIcon"/>
+					<ViewField InternalName="Title"/>
+					<ViewField InternalName="FileSizeDisplay"/>
+					<ViewField InternalName="Freigabe"/>
+					<ViewField InternalName="Author"/>
+					<ViewField InternalName="ID"/>
+				</View>
+				<RoleAssignment Group="Ausbilder Gesamt" RoleDefinition="Ausbildungsinhalte erstellen"/>
+				<RoleAssignment Group="Lerngruppen-Koordinatoren" RoleDefinition="Nur anzeigen"/>
+			</List>
+			<List Name="Lerngruppen" ListTemplate="GenericList"
+				  Description="In Lerngruppen werden Ausbildungsinhalte und Rehabilitanden verwaltet"
+				  OnQuickLaunch="$true" EnableFolderCreation="$false"
+				   BreakRoleInheritance="$false">
+				<Field Name="Titel"
+					   Description="Das Anlegen einer Lerngruppe kann bis zu einer Minute dauern. Laden Sie die Seite anschließend mit F5 neu"
+					   ShowInEditForm="$false"
+					   ShowInDisplayForm="$true"
+					ShowInNewForm="$false"
+					EnforceUniqueValuess="$true"/>
+				<Field Name="Lerngruppensite" SPFieldType="URL" Required="$false"
+					Description="Die Lerngruppensite ist die Homepage, die die Teilnehmer und Ausbilder der Lerngruppe gemeinsam nutzen"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$false"/>
+				<Field Name="Maßnahmenort" SPFieldType="Choice" abc="$true" Required="$false" Choices="Rehazentrum;Geschäftsstelle"
+					Description="Die Angabe des Maßnahmenortes (Rehazentrum oder Außenstelle) ermöglicht die getrennte Auswertung der Daten"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					EditFormat="Dropdown"/>
+				<Field Name="Teilnehmer" SPFieldType="User" Required="$false"
+					Description="Die Teilnehmer, die in dieser Lerngruppe mitarbeiten"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$false"
+					SelectionMode="PeopleOnly"/>
+				<Field Name="Aktiv" SPFieldType="Boolean" Required="$false"
+					Description="Wird die Lerngruppe deaktiviert, wird den Teilnehmern der Zugriff auf die Ausbildungsinhalte entzogen."
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<View Title="Alle Elemente">
+					<ViewField InternalName="Lerngruppensite"/>
+					<ViewField InternalName="Ma_x00df_nahmenort"/>
+					<ViewField InternalName="Teilnehmer"/>
+					<ViewField InternalName="Aktiv"/>
+					<ViewField InternalName="Author"/>
+					<ViewField InternalName="ID"/>
+				</View>
+				<RoleAssignment Group="Lerngruppen-Koordinatoren" RoleDefinition="Ausbildungsinhalte erstellen"/>
+			</List>
+			<List Name="Links" ListTemplate="GenericList" Description="Links können von Ausbildern erstellt werden, anderen freigegeben und in Lerngruppen verwendet werden"
+					OnQuickLaunch="$false" EnableFolderCreation="$false"
+					EnableVersioning="$true"
+				   BreakRoleInheritance="$false">
+				<Field Name="Ausbildungsrichtung" SPFieldType="Choice" abc="$true" Required="$false" Choices="Bau;gewerblich-technisch;kaufmännisch;übergreifend"
+					Description="Die Ausbildungsrichtung gibt an aus welchem Bereich der Ausbildungsinhalt stammt: kaufmännisch, gewerblich-technisch oder Bau"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					EditFormat="RadioButtons"/>
+				<Field Name="Beschreibung" SPFieldType="Note" Required="$false"
+					Description="Die Beschreibung gibt Aufschluss über Inhalt und Umfang eines Ausbildungsinhalts"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<Field Name="Lerngruppen" SPFieldType="Lookup" LookupList="Lerngruppen"
+					Description="Lerngruppen, in denen der Ausbildungsinhalt verwendet wird"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$false"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Freigabe" SPFieldType="Boolean" Required="$false"
+					Description="Eine Freigabe bedeutet, dass das Dokument von anderen Ausbildern in Lerngruppen verwendet werden kann"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<View Title="Alle Elemente">
+					<ViewField InternalName="DocIcon"/>
+					<ViewField InternalName="Title"/>
+					<ViewField InternalName="Freigabe"/>
+					<ViewField InternalName="Author"/>
+					<ViewField InternalName="ID"/>
+				</View>
+				<RoleAssignment Group="Ausbilder Gesamt" RoleDefinition="Ausbildungsinhalte erstellen"/>
+				<RoleAssignment Group="Lerngruppen-Koordinatoren" RoleDefinition="Nur anzeigen"/>
+			</List>
+			<List Name="Content-Gruppen" ListTemplate="GenericList" Description="Content-Gruppen stellen ein wiederverwendbares Element dar und fassen mehrere Contents zu einer Gruppe zusammen"
+						OnQuickLaunch="$false" EnableFolderCreation="$false"
+						EnableVersioning="$true"
+				   BreakRoleInheritance="$false">
+				<Field Name="Ausbildungsrichtung" SPFieldType="Choice" abc="$true" Required="$false" Choices="Bau;gewerblich-technisch;kaufmännisch;übergreifend"
+					Description="Die Ausbildungsrichtung gibt an aus welchem Bereich der Ausbildungsinhalt stammt: kaufmännisch, gewerblich-technisch oder Bau"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					EditFormat="RadioButtons"/>
+				<Field Name="Beschreibung" SPFieldType="Note" Required="$false"
+					Description="Die Beschreibung gibt Aufschluss über Inhalt und Umfang eines Ausbildungsinhalts"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<Field Name="Lerngruppen" SPFieldType="Lookup" LookupList="Lerngruppen"
+					Description="Lerngruppen, in denen der Ausbildungsinhalt verwendet wird"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$false"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Contents" SPFieldType="Lookup"
+					Description="Hier können E-Learning Contents hinzugefügt werden"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<View Title="Alle Elemente">
+					<ViewField InternalName="DocIcon"/>
+					<ViewField InternalName="Title"/>
+					<ViewField InternalName="Author"/>
+					<ViewField InternalName="ID"/>
+				</View>
+				<RoleAssignment Group="Ausbilder Gesamt" RoleDefinition="Lesen"/>
+				<RoleAssignment Group="Lerngruppen-Koordinatoren" RoleDefinition="Ausbildungsinhalte erstellen"/>
+			</List>
+			<List Name="Bildungspakete" ListTemplate="GenericList" Description="Bildungspakete stellen ein wiederverwendbares Element dar und fassen unterschiedliche Ausbildungsinhalte oder Content-Gruppen zusammen"
+						OnQuickLaunch="$false" EnableFolderCreation="$false"
+						EnableVersioning="$true"
+				   BreakRoleInheritance="$false">
+				<Field Name="Ausbildungsrichtung" SPFieldType="Choice" abc="$true" Required="$false" Choices="Bau;gewerblich-technisch;kaufmännisch;übergreifend"
+					Description="Die Ausbildungsrichtung gibt an aus welchem Bereich der Ausbildungsinhalt stammt: kaufmännisch, gewerblich-technisch oder Bau"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					EditFormat="RadioButtons"/>
+				<Field Name="Beschreibung" SPFieldType="Note" Required="$false"
+					Description="Die Beschreibung gibt Aufschluss über Inhalt und Umfang eines Ausbildungsinhalts"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"/>
+				<Field Name="Lerngruppen" SPFieldType="Lookup" LookupList="Lerngruppen"
+					Description="Lerngruppen, in denen der Ausbildungsinhalt verwendet wird"
+					ShowInEditForm="$false"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$false"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Contents" SPFieldType="Lookup"
+					Description="Hier können E-Learning Contents hinzugefügt werden"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Skripte" SPFieldType="Lookup"
+					Description="Hier können E-Learning Skripte hinzugefügt werden"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Übungen" SPFieldType="Lookup"
+					Description="Hier können E-Learning Übungen hinzugefügt werden"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Links" SPFieldType="Lookup"
+					Description="Hier können E-Learning Links hinzugefügt werden"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="CAD-Zeichnungen" SPFieldType="Lookup"
+					Description="Hier können E-Learning CAD-Zeichnungen hinzugefügt werden"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<Field Name="Content-Gruppen" SPFieldType="Lookup"
+					Description="Hier können E-Learning Content-Gruppen hinzugefügt werden"
+					ShowInEditForm="$true"
+					ShowInDisplayForm="$true"
+					ShowInNewForm="$true"
+					AllowMultipleValues="$true"
+					Required="$false"/>
+				<View Title="Alle Elemente">
+					<ViewField InternalName="DocIcon"/>
+					<ViewField InternalName="Title"/>
+					<ViewField InternalName="Author"/>
+					<ViewField InternalName="ID"/>
+				</View>
+				<RoleAssignment Group="Ausbilder Gesamt" RoleDefinition="Lesen"/>
+				<RoleAssignment Group="Lerngruppen-Koordinatoren" RoleDefinition="Ausbildungsinhalte erstellen"/>
+			</List>
+			<RoleAssignment Group="Ausbilder Gesamt" RoleDefinition="Seite anzeigen"/>
+			<RoleAssignment Group="Lerngruppen-Koordinatoren" RoleDefinition="Ausbildungsinhalte erstellen"/>
+			<RoleAssignment Group="Lernportal-Manager" RoleDefinition="Gruppen-Verwaltung"/>
+			<RoleAssignment Group="Skript-Genehmiger" RoleDefinition="Seite anzeigen"/>
+			<RoleAssignment Group="Teilnehmer Gesamt" RoleDefinition="Seite anzeigen"/>
+		</Website>
+		<List Name="Veranstaltungen" ListTemplate="Events" Description="Veranstaltungen im ABC"
+			  OnQuickLaunch="$true"
+			   BreakRoleInheritance="$true">
+			<Field Name="Zielgruppe" SPFieldType="Note" Required="$false"
+				Description="Beschreibung, an wen sich die Veranstaltunge richtet"
+				ShowInEditForm="$true"
+				ShowInDisplayForm="$true"
+				ShowInNewForm="$true"/>
+			<Field Name="Arbeitsbereich" Hidden="$true"/>
+			<RoleAssignment Group="ABC-User" RoleDefinition="Lesen"/>
+			<RoleAssignment Group="Veranstaltungs-Ersteller" RoleDefinition="Erstellen"/>
+			<RoleAssignment Group="Veranstaltungs-Genehmiger" RoleDefinition="Veranstaltungs-Genehmigung"/>
+		</List>
+		<List Name="Links" ListTemplate="Links" Description="Hyperlinks zu externen Seiten"
+			  OnQuickLaunch="$true" EnableFolderCreation="$false"
+			   BreakRoleInheritance="$true">
+			<RoleAssignment Group="ABC-User" RoleDefinition="Lesen"/>
+			<RoleAssignment Group="Veranstaltungs-Ersteller" RoleDefinition="Erstellen"/>
+			<RoleAssignment Group="Veranstaltungs-Genehmiger" RoleDefinition="Veranstaltungs-Genehmigung"/>
+		</List>
+		<List Name="Stellenanzeigen" ListTemplate="DocumentLibrary" Description="Stellenanzeigen"
+			  OnQuickLaunch="$true" EnableFolderCreation="$false"
+			   BreakRoleInheritance="$true">
+			<Field Name="Titel"
+						   Description="Stellentitel"
+						   ShowInEditForm="$true"
+						   ShowInDisplayForm="$true"
+						ShowInNewForm="$true"/>
+			<Field Name="Branche" SPFieldType="Text" Required="$false"
+						Description="Branchenbezeichnung, die für diese Stelle zutrifft"
+						ShowInEditForm="$true"
+						ShowInDisplayForm="$true"
+						ShowInNewForm="$true"/>
+			<Field Name="Tätigkeit" SPFieldType="Note" Required="$false"
+						Description="Tätigkeit der ausgeschriebenen Stelle"
+						ShowInEditForm="$true"
+						ShowInDisplayForm="$true"
+						ShowInNewForm="$true"/>
+			<Field Name="Eintrittstermin" SPFieldType="DateTime" Required="$false"
+						Description="Datum, ab dem diese Stelle besetzt wird"
+						ShowInEditForm="$true"
+						ShowInDisplayForm="$true"
+						ShowInNewForm="$true"/>
+			<Field Name="Ort" SPFieldType="Text" Required="$false"
+						Description="Ort der Tätigkeit"
+						ShowInEditForm="$true"
+						ShowInDisplayForm="$true"
+						ShowInNewForm="$true"/>
+			<RoleAssignment Group="ABC-User" RoleDefinition="Lesen"/>
+			<RoleAssignment Group="Stellenanzeigen-Verwaltung" RoleDefinition="Mitwirken"/>
+		</List>
+		<List Name="Essensplan" ListTemplate="DocumentLibrary" Description="Der aktuelle Essensplan zum Download"
+			  OnQuickLaunch="$true" EnableFolderCreation="$false"
+			   BreakRoleInheritance="$true">
+			<RoleAssignment Group="ABC-User" RoleDefinition="Lesen"/>
+			<RoleAssignment Group="Küche" RoleDefinition="Mitwirken"/>
+		</List>
+		<RoleAssignment Group="ABC-User" RoleDefinition="Seite anzeigen"/>
+		<RoleAssignment Group="Lernportal-Manager" RoleDefinition="Gruppen-Verwaltung"/>
+	</Website>
+	<Group Name="ABC-User" Owner="Besitzer von Ausbildungsintranet" DefaultUser="$null"
+		   Description="Alle Benutzer, die im ABC über einen Zugang verfügen, sollen auch auf das Ausbildungsintranet zugreifen können"/>
+	<Group Name="Lernportal-Manager" Owner="Besitzer von Ausbildungsintranet" DefaultUser="$null"
+		   Description="Die Lernportal-Manager verwalten die Mitgliedschaft in den Gruppen"/>
+	<Group Name="Ausbilder Gesamt" Owner="Lernportal-Manager" DefaultUser="$null"
+		   Description="Ausbilder haben Zugriff auf das Lernportal, Lerngruppensites und darin enthaltene Bibliotheken und Listen"/>
+	<Group Name="Teilnehmer Gesamt" Owner="Lernportal-Manager" DefaultUser="$null"
+		   Description="Ausbilder haben Zugriff auf  Lerngruppensites und einzelne Dokumente in den Bibliotheken und Listen"/>
+	<Group Name="Lerngruppen-Koordinatoren" Owner="Lernportal-Manager" DefaultUser="$null"
+		   Description="Lerngruppen-Koordinatoren haben besondere Berechtigungen zum Erstellen von Lerngruppen, Content-Gruppen und Bildungspaketen"/>
+	<Group Name="Blog-Moderatoren" Owner="Lernportal-Manager" DefaultUser="$null"
+		   Description="Mitglieder dieser Gruppe können Blog-Einträge verwalten"/>
+	<Group Name="Veranstaltungs-Ersteller" Owner="Lernportal-Manager" DefaultUser="$null"
+		   Description="Mitglieder dieser Gruppe können Veranstaltungen erstellen"/>
+	<Group Name="Veranstaltungs-Genehmiger" Owner="Lernportal-Manager" DefaultUser="$null"
+		   Description="Mitglieder dieser Gruppe können Veranstaltungen genehmigen"/>
+	<Group Name="Skript-Genehmiger" Owner="Lernportal-Manager" DefaultUser="$null"
+		   Description="Skript-Genehmiger können Skripte genehmigen"/>
+	<Group Name="Küche" Owner="Lernportal-Manager" DefaultUser="$null"
+		   Description="Mitglieder dieser Gruppe können Essenspläne verwalten"/>
+	<Group Name="Stellenanzeigen-Verwalter" Owner="Lernportal-Manager" DefaultUser="$null"
+		   Description="Mitglieder dieser Gruppe können Stellenanzeigen einscannen und verwalten"/>
+	<RoleDefinition Name="Vollzugriff" Description="Verwaltung von Websites, Listen und Items"
+					BasePermissions="	ManageLists,
+											CancelCheckout,
+											AddListItems,
+											EditListItems,
+											DeleteListItems,
+											ViewListItems,
+											ApproveItems,
+											OpenItems,
+											ViewVersions,
+											DeleteVersions,
+											CreateAlerts,
+											ViewFormPages,
+											ManagePermissions,
+											ViewUsageData,
+											ManageSubwebs,
+											ManageWeb,
+											AddAndCustomizePages,
+											ApplyThemeAndBorder,
+											ApplyStyleSheets,
+											CreateGroups,
+											BrowseDirectories,
+											CreateSSCSite,
+											ViewPages,
+											EnumeratePermissions,
+											BrowseUserInfo,
+											ManageAlerts,
+											UseRemoteAPIs,
+											UseClientIntegration,
+											Open,
+											EditMyUserInfo"/>
+	<RoleDefinition Name="Entwerfen" Description="Erstellen von Unterwebsites und Verwaltung von Berechtigungen auf Lerngruppensites"
+					BasePermissions="	ManageLists,
+											CancelCheckout,
+											AddListItems,
+											EditListItems,
+											DeleteListItems,
+											ViewListItems,
+											ApproveItems,
+											OpenItems,
+											ViewVersions,
+											DeleteVersions,
+											CreateAlerts,
+											ViewFormPages,
+											ManagePermissions,
+											ManageSubwebs,
+											AddAndCustomizePages,
+											ApplyThemeAndBorder,
+											ApplyStyleSheets,
+											BrowseDirectories,
+											CreateSSCSite,
+											ViewPages,
+											EnumeratePermissions,
+											BrowseUserInfo,
+											ManageAlerts,
+											UseRemoteAPIs,
+											UseClientIntegration,
+											Open"/>
+	<RoleDefinition Name="Mitwirken" Description="Bearbeiten-Berechtigung auf Item-Ebene"
+					BasePermissions="	AddListItems,
+											EditListItems,
+											ViewListItems,
+											OpenItems,
+											ViewVersions,
+											DeleteVersions,
+											CreateAlerts,
+											ViewFormPages,
+											ViewPages,
+											BrowseUserInfo,
+											UseClientIntegration,
+											Open"/>
+	<RoleDefinition Name="Erstellen" Description="Erstellen von Einträgen in Blogs etc. und Öffnen von Elementen anderer User"
+					BasePermissions="	AddListItems,
+											ViewListItems,
+											OpenItems,
+											CreateAlerts,
+											ViewFormPages,
+											ViewPages,
+											BrowseUserInfo,
+											Open"/>
+	<RoleDefinition Name="Ausbildungsinhalte erstellen" Description="Erstellen neuer Elemente und Anzeigen anderer Elemente"
+					BasePermissions="	AddListItems,
+											ViewListItems,
+											ViewFormPages,
+											ViewPages,
+											Open"/>
+	<RoleDefinition Name="Lesen" Description="Öffnen und Herunterladen von Elementen"
+					BasePermissions="	OpenItems,
+											ViewVersions,
+											CreateAlerts,
+											ViewFormPages,
+											ViewPages,
+											UseRemoteAPIs,
+											UseClientIntegration,
+											Open"/>
+	<RoleDefinition Name="Items anzeigen" Description="Anzeigen von Elementen"
+					BasePermissions="	ViewListItems,
+											ViewVersions,
+											ViewFormPages,
+											ViewPages,
+											UseClientIntegration,
+											Open"/>
+	<RoleDefinition Name="Seite anzeigen" Description="Eine Webseite öffnen"
+					BasePermissions="	ViewPages,
+											Open"/>
+	<RoleDefinition Name="Veranstaltungs-Genehmigung" Description="Verwalten und genehmigen von Veranstaltungen"
+					BasePermissions="	AddListItems,
+											EditListItems,
+											DeleteListItems,
+											ViewListItems,
+											ApproveItems,
+											OpenItems,
+											ViewVersions,
+											ViewPages,
+											Open"/>
+	<RoleDefinition Name="Skript-Genehmigung" Description="Öffnen und genehmigen von Skripten"
+					BasePermissions="	ViewListItems,
+											ApproveItems,
+											OpenItems,
+											ViewVersions,
+											ViewPages,
+											Open"/>
+	<RoleDefinition Name="Gruppen-Verwaltung" Description="Öffnen der Website und Verwaltung der User und Gruppen"
+					BasePermissions="	ManagePermissions,
+											ViewPages,
+											Open"/>
+</Root>
